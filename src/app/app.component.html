@@ -1,0 +1,8 @@
+<form [formGroup]="form">
+Name: <input type="text" formControlName="name" id="name" [ngClass]="displayFieldCss('name')"/><br>
+  <div *ngIf="form.get('name').dirty && form.get('name').invalid"> Please inform your name</div>
+<br><br>
+Email:  <input type="email" formControlName="email" id="email" [ngClass]="displayFieldCss('email')"/><br>
+  <div  *ngIf="form.get('email').dirty && form.get('email').invalid"> Please inform your email</div>
+<button type="submit" (click)="onSubmit(form)">Submit</button>
+</form>

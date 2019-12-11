@@ -1,0 +1,6 @@
+p {
+  font-family: Lato;
+}
+.has-error.has-feedback{
+  color:red;
+}
