@@ -7,6 +7,7 @@ import { DataService } from './../data.service';
 })
 export class SibilingComponent implements OnInit {
 msg:string;
+sibiling:string='Sujata';
   constructor(private dataService:DataService) { }
 
   ngOnInit() 

@@ -1,16 +1,19 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit,ViewChildren,AfterViewInit,ChangeDetectorRef } from '@angular/core';
 import { AbstractControl,ValidatorFn,ReactiveFormsModule,FormGroup,Validators,FormArray,FormControl,FormBuilder} from '@angular/forms';
 import { DataService } from './data.service';
+import { SibilingComponent } from './sibiling/sibiling.component';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit,AfterViewInit{
   form:FormGroup;
   msg:string;
-  
-constructor(private formBuilder:FormBuilder,private dataService:DataService){
+  childname:string;
+  sibilingName:string;
+  @ViewChildren(SibilingComponent) child;
+constructor(private formBuilder:FormBuilder,private dataService:DataService,private cd:ChangeDetectorRef){
 
 }
 ngOnInit(){
@@ -23,6 +26,15 @@ ngOnInit(){
 
    this.dataService.currentMessage.subscribe(msg=>this.msg=msg);
   
+}
+
+ngAfterViewInit(){
+  this.sibilingName=this.child.sibiling;
+   this.cd.detectChanges();
+}
+
+receiveMessage(e){
+  this.childname=e;
 }
 
 changeMsg(){

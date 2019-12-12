@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <h2 [ngStyle]="{'background-color':'green'}" >My Form</h2>
-  <h4>{{msg}}</h4>
+  <h4>{{msg}} , Child Name : {{childname}} , Sibiling Name : {{sibilingName}}</h4>
   Name: <input type="text" formControlName="name"/>
   <div  *ngIf="isFieldValid('name')" [ngClass]="displayFieldCss('name')"> Please inform your name</div><br><br>
   Email: <input type="email" formControlName="email">
@@ -15,11 +15,11 @@
   Address Line2<input type="text" formControlName="addressLine2"/>
 </ng-container>
 </div>
- <button type="button" (click)="addAddressFields()">addAddressFields</button><br><br>
-  <button type="button" (click)="removeAddressFields()">removeAddressFields</button><br><br>
+ <button type="button" (click)="addAddressFields()">Add AddressFields</button><br><br>
+  <button type="button" (click)="removeAddressFields()">Remove Address Fields</button><br><br>
   <button type="submit" (click)="submitForm()">Submit Form</button>
 </form><br>
-<button type="button" (click)="changeMsg()">Change Msg</button>
-<app-child [form]="form"></app-child>
+<button type="button" (click)="changeMsg()">Change Message</button>
+<app-child [form]="form" (messageEvent)="receiveMessage($event)"></app-child>
 <app-sibiling></app-sibiling>
 
