@@ -1,6 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { AbstractControl,ValidatorFn,ReactiveFormsModule,FormGroup,Validators,FormArray,FormControl,FormBuilder} from '@angular/forms';
-
+import { DataService } from './data.service';
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
@@ -8,7 +8,8 @@ import { AbstractControl,ValidatorFn,ReactiveFormsModule,FormGroup,Validators,Fo
 })
 export class AppComponent implements OnInit{
   form:FormGroup;
-constructor(private formBuilder:FormBuilder){
+  msg:string;
+constructor(private formBuilder:FormBuilder,private dataService:DataService){
 
 }
 ngOnInit(){
@@ -18,6 +19,8 @@ ngOnInit(){
     age:['',[Validators.required,this.ageRangeValidator(10, 20)]],
     address:this.formBuilder.array([])
   })
+
+   this.dataService.currentMessage.subscribe(msg=>this.msg=msg);
 
 }
 

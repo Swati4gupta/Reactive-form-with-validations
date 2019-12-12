@@ -5,11 +5,13 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ChildComponent } from './child/child.component';
 import { SibilingComponent } from './sibiling/sibiling.component';
+import { DataService } from './data.service';
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,ReactiveFormsModule ],
   declarations: [ AppComponent, ChildComponent, SibilingComponent ],
-  bootstrap:    [ AppComponent ]
+  bootstrap:    [ AppComponent ],
+  providers: [DataService]
 })
 export class AppModule { }
