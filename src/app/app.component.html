@@ -1,5 +1,6 @@
 <form [formGroup]="form">
   <h2 [ngStyle]="{'background-color':'green'}" >My Form</h2>
+  <h4>{{msg}}</h4>
   Name: <input type="text" formControlName="name"/>
   <div  *ngIf="isFieldValid('name')" [ngClass]="displayFieldCss('name')"> Please inform your name</div><br><br>
   Email: <input type="email" formControlName="email">
@@ -17,8 +18,8 @@
  <button type="button" (click)="addAddressFields()">addAddressFields</button><br><br>
   <button type="button" (click)="removeAddressFields()">removeAddressFields</button><br><br>
   <button type="submit" (click)="submitForm()">Submit Form</button>
-</form>
-
+</form><br>
+<button type="button" (click)="changeMsg()">Change Msg</button>
 <app-child [form]="form"></app-child>
 <app-sibiling></app-sibiling>
 

@@ -1,2 +1,5 @@
 <h2 [ngStyle]="{'background-color':'green'}" >Child Form</h2>
+<h4>{{msg}}</h4>
 Name: {{ form.get('name').value }} <br>
+
+<button type="button" (click)="changeMsg()">Change Msg</button>

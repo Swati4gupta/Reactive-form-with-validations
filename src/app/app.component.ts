@@ -9,6 +9,7 @@ import { DataService } from './data.service';
 export class AppComponent implements OnInit{
   form:FormGroup;
   msg:string;
+  
 constructor(private formBuilder:FormBuilder,private dataService:DataService){
 
 }
@@ -21,8 +22,12 @@ ngOnInit(){
   })
 
    this.dataService.currentMessage.subscribe(msg=>this.msg=msg);
-
+  
 }
+
+changeMsg(){
+    this.dataService.changeMessage('Hello Swati : Called from Parent')
+  }
 
 ageRangeValidator(min: number, max: number): ValidatorFn {
     return (control: AbstractControl): { [key: string]: boolean } | null => {

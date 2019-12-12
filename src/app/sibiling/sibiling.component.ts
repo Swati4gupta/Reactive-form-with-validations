@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '.././data.service';
+import { DataService } from './../data.service';
 @Component({
   selector: 'app-sibiling',
   templateUrl: './sibiling.component.html',
@@ -12,6 +12,10 @@ msg:string;
   ngOnInit() 
   {
     this.dataService.currentMessage.subscribe(msg=>this.msg=msg);
+  }
+
+  changeMsg(){
+    this.dataService.changeMessage('Hello Swati : Called from sibiling')
   }
 
 
