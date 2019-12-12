@@ -1,8 +1,18 @@
 <form [formGroup]="form">
-Name: <input type="text" formControlName="name" id="name" [ngClass]="displayFieldCss('name')"/><br>
-  <div *ngIf="form.get('name').dirty && form.get('name').invalid"> Please inform your name</div>
-<br><br>
-Email:  <input type="email" formControlName="email" id="email" [ngClass]="displayFieldCss('email')"/><br>
-  <div  *ngIf="form.get('email').dirty && form.get('email').invalid"> Please inform your email</div>
-<button type="submit" (click)="onSubmit(form)">Submit</button>
+  Name: <input type="text" formControlName="name"/>
+  <div  *ngIf="isFieldValid('name')" [ngClass]="displayFieldCss('name')"> Please inform your name</div><br><br>
+  Email: <input type="email" formControlName="email">
+  <div  *ngIf="isFieldValid('email')" [ngClass]="displayFieldCss('email')" >Please inform your email</div>
+  <br><br>
+<div formArrayName="address" *ngFor="let addField of form.controls.address?.value;let i=index">
+<ng-container [formGroupName]="i">
+  Address Line1<input type="text" formControlName="addressLine1"/><br>
+  Address Line2<input type="text" formControlName="addressLine2"/>
+</ng-container>
+</div>
+ <button type="button" (click)="addAddressFields()">addAddressFields</button>
+  <button type="button" (click)="removeAddressFields()">removeAddressFields</button>
+  <button type="submit" (click)="submitForm()">Submit Form</button>
+
+
 </form>
