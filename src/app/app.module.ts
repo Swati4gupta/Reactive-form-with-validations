@@ -7,16 +7,12 @@ import { ChildComponent } from './child/child.component';
 import { SibilingComponent } from './sibiling/sibiling.component';
 import { DataService } from './data.service';
 import { StudentComponent } from './user/student/student.component';
-import {UserModule } from './user/user.module'
-export const routes:Routes=[{path:'parent',component:AppComponent},
-{path:'child',component:ChildComponent},
-{path:'sibiling',component:SibilingComponent},
-{path:'user',loadChildren:'../app/user/user.module#UserModule'},
-{path:'',redirectTo:'parent',pathMatch:'full'}];
+import {UserModule } from './user/user.module';
+import { AppRouting } from './app.routing';
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,ReactiveFormsModule, UserModule,
-  RouterModule.forRoot(routes) ],
+  AppRouting ],
   declarations: [ AppComponent, ChildComponent, SibilingComponent ],
    exports: [ RouterModule,AppComponent, ChildComponent, SibilingComponent ],
   bootstrap:    [ AppComponent ],
