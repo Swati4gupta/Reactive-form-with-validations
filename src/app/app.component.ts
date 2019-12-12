@@ -1,5 +1,5 @@
 import { Component,OnInit } from '@angular/core';
-import { ReactiveFormsModule,FormGroup,Validators,FormArray,FormControl,FormBuilder} from '@angular/forms';
+import { AbstractControl,ValidatorFn,ReactiveFormsModule,FormGroup,Validators,FormArray,FormControl,FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'my-app',
@@ -14,10 +14,20 @@ constructor(private formBuilder:FormBuilder){
 ngOnInit(){
   this.form=this.formBuilder.group({
     name:['',Validators.required],
-    email:['',Validators.required],
+    email:['',[Validators.email,Validators.required]],
+    age:['',[Validators.required,this.ageRangeValidator(10, 20)]],
     address:this.formBuilder.array([])
   })
 
+}
+
+ageRangeValidator(min: number, max: number): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: boolean } | null => {
+        if (control.value !== undefined && (isNaN(control.value) || control.value < min || control.value > max)) {
+            return { 'ageRange': true };
+        }
+        return null;
+    };
 }
   addAddressFields()
   {

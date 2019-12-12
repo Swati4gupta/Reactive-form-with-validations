@@ -4,6 +4,9 @@
   Email: <input type="email" formControlName="email">
   <div  *ngIf="isFieldValid('email')" [ngClass]="displayFieldCss('email')" >Please inform your email</div>
   <br><br>
+  Age:<input type="number" formControlName="age">
+  <div  *ngIf="isFieldValid('age')" [ngClass]="displayFieldCss('age')" >Age not valid</div>
+  <br><br>
 <div formArrayName="address" *ngFor="let addField of form.controls.address?.value;let i=index">
 <ng-container [formGroupName]="i">
   Address Line1<input type="text" formControlName="addressLine1"/><br>
