@@ -1,3 +1,11 @@
+<div style="text-align:center">
+  <nav>
+    <a routerLink="/parent" >Parent</a>
+    <a routerLink="/child" routerLinkActive="active">Child</a>
+    <a routerLink="/sibiling" routerLinkActive="active">Sibiling</a>
+  </nav>
+</div>
+<div class="center">
 <form [formGroup]="form">
   <h2 [ngStyle]="{'background-color':'green'}" >My Form</h2>
   <h4>{{msg}} , Child Name : {{childname}} , Sibiling Name : {{sibilingName}}</h4>
@@ -20,6 +28,9 @@
   <button type="submit" (click)="submitForm()">Submit Form</button>
 </form><br>
 <button type="button" (click)="changeMsg()">Change Message</button>
-<app-child [form]="form" (messageEvent)="receiveMessage($event)"></app-child>
-<app-sibiling></app-sibiling>
+<!-- <app-child [form]="form" (messageEvent)="receiveMessage($event)"></app-child>
+<app-sibiling></app-sibiling> -->
+
+<router-outlet></router-outlet>
+</div>
 
