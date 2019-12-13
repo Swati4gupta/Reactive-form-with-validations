@@ -15,7 +15,7 @@
   Email: <input type="email" formControlName="email">
   <div  *ngIf="isFieldValid('email')" [ngClass]="displayFieldCss('email')" >Please inform your email</div>
   <br><br>
-  Age:<input type="number" formControlName="age">
+  Age:<input type="number" formControlName="age">{{form.controls.age.value|doubles}}
   <div  *ngIf="isFieldValid('age')" [ngClass]="displayFieldCss('age')" >Age not valid</div>
   <br><br>
 <div formArrayName="address" *ngFor="let addField of form.controls.address?.value;let i=index">
@@ -28,7 +28,7 @@
   <button type="button" (click)="removeAddressFields()">Remove Address Fields</button><br><br>
   <button type="submit" (click)="submitForm()">Submit Form</button>
 </form><br>
-<button type="button" (click)="changeMsg()">Change Message</button>
+<button type="button" (click)="changeMsg()" customD>Change Message</button>
 <!-- <app-child [form]="form" (messageEvent)="receiveMessage($event)"></app-child>
 <app-sibiling></app-sibiling> -->
 
