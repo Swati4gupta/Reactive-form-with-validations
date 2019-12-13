@@ -1,0 +1,6 @@
+template reference variables
+template driven form
+lifecycle hook diffrenece
+questions
+versioning difference
+changeDetection strategy

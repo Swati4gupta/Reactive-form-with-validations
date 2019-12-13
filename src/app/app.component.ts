@@ -66,7 +66,7 @@ addressForm.removeAt(addressForm.length-1);
 
   submitForm(){
     if(this.form.valid){
-      alert("form valid")
+     console.log(this.form.value)
     }else{
      this.validateAllFields(this.form);
     }
