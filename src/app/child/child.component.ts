@@ -21,6 +21,8 @@ childname:string="Shruti";
 changeMsg(){
   this.dataService.changeMessage('Hello Swati : Called from child')
 }
-
+hello(){
+  console.log('hello')
+}
 
 }

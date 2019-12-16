@@ -5,11 +5,12 @@
     <a routerLink="/sibiling" routerLinkActive="active">Sibiling</a>
     <a routerLink="/user/student" routerLinkActive="active">Student</a>
   </nav>
-</div>
+</div> {{ hello() }}
 <div class="center">
 <form [formGroup]="form">
   <h2 [ngStyle]="{'background-color':'green'}" >My Form</h2>
   <h4>{{msg}} , Child Name : {{childname}} , Sibiling Name : {{sibilingName}}</h4>
+
   Name: <input type="text" formControlName="name"/>
   <div  *ngIf="isFieldValid('name')" [ngClass]="displayFieldCss('name')"> Please inform your name</div><br><br>
   Email: <input type="email" formControlName="email">

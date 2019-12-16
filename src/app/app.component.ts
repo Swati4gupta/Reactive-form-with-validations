@@ -1,11 +1,14 @@
-import { Component,OnInit,ViewChildren,AfterViewInit,ChangeDetectorRef } from '@angular/core';
+import { Component,OnInit,ViewChildren,AfterViewInit,ChangeDetectorRef,ChangeDetectionStrategy } from '@angular/core';
 import { AbstractControl,ValidatorFn,ReactiveFormsModule,FormGroup,Validators,FormArray,FormControl,FormBuilder} from '@angular/forms';
+
 import { DataService } from './data.service';
 import { SibilingComponent } from './sibiling/sibiling.component';
 @Component({
   selector: 'my-app',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
+    
 })
 export class AppComponent implements OnInit,AfterViewInit{
   form:FormGroup;
@@ -14,7 +17,11 @@ export class AppComponent implements OnInit,AfterViewInit{
   sibilingName:string;
   @ViewChildren(SibilingComponent) child;
 constructor(private formBuilder:FormBuilder,private dataService:DataService,private cd:ChangeDetectorRef){
+ 
+}
 
+hello(){
+  console.log('hello')
 }
 ngOnInit(){
   this.form=this.formBuilder.group({
@@ -28,6 +35,8 @@ ngOnInit(){
   
 }
 
+
+
 ngAfterViewInit(){
   this.sibilingName=this.child.sibiling;
    this.cd.detectChanges();
@@ -38,6 +47,7 @@ receiveMessage(e){
 }
 
 changeMsg(){
+ 
     this.dataService.changeMessage('Hello Swati : Called from Parent')
   }
 

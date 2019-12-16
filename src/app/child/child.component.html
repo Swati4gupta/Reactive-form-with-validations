@@ -1,6 +1,6 @@
 <h2 [ngStyle]="{'background-color':'green'}" >Child Form : {{ childname}}</h2>
 <h4>{{msg}}</h4>
 Name: {{ form.get('name').value }} <br><br>
-
+ {{ hello() }}
 <button type="button" (click)="changeMsg()">Change Message</button><br><br>
 <button type="button" (click)="sendMessage()">Send Child Name</button>
